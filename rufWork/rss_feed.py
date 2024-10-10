@@ -1,6 +1,7 @@
-import feedparser
 import time
 from datetime import datetime
+
+import feedparser
 import pytz
 
 # define the time zone you want to use
@@ -23,9 +24,11 @@ while True:
                 # print the entry title, link, and time
                 published_time = getattr(entry, 'published_parsed', None)
                 if published_time:
-                    published_time = datetime.fromtimestamp(time.mktime(published_time)).astimezone(tz).strftime("%Y-%m-%d %H:%M:%S")
+                    published_time = datetime.fromtimestamp(time.mktime(
+                        published_time)).astimezone(tz).strftime("%Y-%m-%d %H:%M:%S")
                 else:
-                    published_time = datetime.now(tz).strftime("%Y-%m-%d %H:%M:%S")
+                    published_time = datetime.now(
+                        tz).strftime("%Y-%m-%d %H:%M:%S")
                 count += 1
                 print(f"{count} {published_time}: {entry.title}: {entry.link}")
                 # add the link to the printed_entries set
@@ -40,4 +43,4 @@ while True:
 
     # wait for a minute before checking again
     time.sleep(60)
-    #sajfsaofjsaoifjsaoifjaoifa
+    # sajfsaofjsaoifjsaoifjaoifa
